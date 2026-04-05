@@ -24,6 +24,7 @@ The focus is not only on model performance, but also on engineering structure, i
 
 ---
 
+```
 smart-demand-forecasting/
 ├── app/
 ├── dashboard/
@@ -39,3 +40,4 @@ smart-demand-forecasting/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+```
