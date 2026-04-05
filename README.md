@@ -5,6 +5,18 @@ feature engineering, model training, evaluation, API deployment, and interactive
 
 ---
 
+## Feature Engineering
+
+The model uses a combination of:
+
+- Time-based features (hours, day of week, month)
+- Lag features to capture temporal dependencies
+- Rolling statistics to capture short-term trends and variability
+
+This allows the model to learn both periodic patterns and recent dynamics in the data.
+
+---
+
 ## Motivation
 
 This project was designed to demonstrate applied machine learning and data science workflow development in a complete, reproducible system.
