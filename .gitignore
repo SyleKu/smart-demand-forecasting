@@ -6,8 +6,6 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 models/*.pkl
-reports/figures/*
-!reports/figures/.gitkeep
 .ipynb_checkpoints/
 
 # Byte-compiled / optimized / DLL files
