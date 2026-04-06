@@ -43,7 +43,23 @@ def compute_baseline_predictions(test_df: pd.DataFrame) -> np.ndarray:
     # Simple baseline: use lag_1 as prediction
     return test_df["lag_1"].values
 
+def extract_features_and_target(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
+    assert all(col in df.columns for col in FEATURE_COLUMNS), "Missing feature columns"
+    assert TARGET_COLUMN in df.columns, "Missing target column"
+
+    X = df.loc[:, FEATURE_COLUMNS]
+    y = df[TARGET_COLUMN]
+
+    return X, y
+
+
 def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
+    assert isinstance(y_true, np.ndarray)
+    assert isinstance(y_pred, np.ndarray)
+
+    assert len(y_true) > 0, "y_true is empty"
+    assert len(y_pred) > 0, "y_pred is empty"
+
     mae = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
 
@@ -62,6 +78,9 @@ def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     }
 
 def train_model(X_train: pd.DataFrame, y_train: pd.Series) -> RandomForestRegressor:
+    assert isinstance(X_train, pd.DataFrame), "X_train must be a DataFrame"
+    assert isinstance(y_train, pd.Series), "y_train must be a Series"
+
     model = RandomForestRegressor(
         n_estimators=200,
         max_depth=10,
@@ -87,11 +106,8 @@ def main():
     print("\nSplitting data into train and test sets...")
     train_df, test_df = train_test_split_time_series(df)
 
-    X_train = train_df[FEATURE_COLUMNS]
-    y_train = train_df[TARGET_COLUMN]
-
-    X_test = test_df[FEATURE_COLUMNS]
-    y_test = test_df[TARGET_COLUMN]
+    X_train, y_train = extract_features_and_target(train_df)
+    X_test, y_test = extract_features_and_target(test_df)
 
     print(f"Training samples: {len(train_df)}")
     print(f"Test samples: {len(test_df)}")

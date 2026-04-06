@@ -8,10 +8,31 @@ feature engineering, model training, evaluation, API deployment, and interactive
 ## Results
 
 ### Prediction vs Actual
-![Prediction vs Actual](reports/figures/predictions_vs_actual.png)
+![Prediction vs Actual](reports/figures/prediction_vs_actual.png)
 
 ### Residual Distribution
 ![Prediction vs Actual](reports/figures/residuals.png)
+
+### Absolute Error Over Time
+![Prediction vs Actual](reports/figures/absolute_error_over_time.png)
+
+---
+
+## Dashboard
+![Streamlit Dashboard](assets/dashboard_example.png)
+
+The project includes an interactive Streamlit dashboard for exploring model predictions and evaluation results.
+
+### Features
+- Manual input of engineered forecasting features
+- Real-time model inference
+- Display of evaluation metrics
+- Visualization of forecasting results and residual analysis
+
+### Run dashboard
+```
+streamlit run dashboard/app.py
+```
 
 ---
 

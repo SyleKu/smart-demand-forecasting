@@ -1,11 +1,12 @@
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 from contextlib import asynccontextmanager
 
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from sklearn.ensemble import RandomForestRegressor
 
 from app.api.schemas import ForecastRequest, ForecastResponse
 from app.core.config import FEATURE_COLUMNS
@@ -15,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / 'models/trained_model.pkl'
 METRICS_PATH = BASE_DIR / 'reports/metrics.json'
 
-model: Any = None
+model: Optional[RandomForestRegressor] = None
 metrics: dict[str, Any] | None = None
 
 def load_model():
@@ -75,6 +76,10 @@ def predict(request: ForecastRequest):
 
     input_data = pd.DataFrame([request.model_dump()])
 
+    assert isinstance(input_data, pd.DataFrame)
+
+    input_data = input_data.loc[:, FEATURE_COLUMNS]
+
     missing_features = [col for col in FEATURE_COLUMNS if col not in input_data.columns]
     if missing_features:
         raise HTTPException(
@@ -82,7 +87,7 @@ def predict(request: ForecastRequest):
             detail=f"Missing required features: {missing_features}",
         )
 
-    input_data = input_data[FEATURE_COLUMNS]
+    input_data = input_data.loc[:, FEATURE_COLUMNS]
 
     prediction = model.predict(input_data)[0]
 
