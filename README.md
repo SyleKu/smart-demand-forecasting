@@ -1,7 +1,51 @@
 # Smart Demand Forecasting
 
 An end-to-end machine learning system for energy load forecasting, covering data preprocessing, 
-feature engineering, model training, evaluation, API deployment, and interactive visualization.
+feature engineering, model training, evaluation, API deployment, and interactive dashboard.
+
+## Overview
+
+This project demonstrates a complete ML pipeline:
+- Data ingestion and preprocessing
+- Feature engineering (time-based, lag, rolling features)
+- Model training (Random Forest)
+- Evaluation and error analysis
+- API deployment with FastAPI
+- Interactive dashboard with Streamlit
+
+---
+
+## Project Structure
+
+```
+smart-demand-forecasting/
+├── app/
+├── assets/
+├── dashboard/
+├── data/
+│   └── processed/
+│   └── raw/
+│   └── sample/
+├── models/
+├── notebooks/
+├── reports/
+│   └── figures/
+├── tests/
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+---
+
+## Pipeline
+
+1. Generate or load data
+2. Create features
+3. Train model
+4. Evaluate performance
+5. Serve predictions via API
+6. Visualize results in dashboard
 
 ---
 
@@ -15,6 +59,21 @@ feature engineering, model training, evaluation, API deployment, and interactive
 
 ### Absolute Error Over Time
 ![Prediction vs Actual](reports/figures/absolute_error_over_time.png)
+
+## API
+
+Run locally:
+
+```
+uvicorn app.api.main:app --reload
+
+```
+
+Endpoints:
+- `/health`
+- `/model-info`
+- `/predict`
+
 
 ---
 
@@ -58,29 +117,18 @@ The focus is not only on model performance, but also on engineering structure, i
 ## Tech Stack
 
 - Python
-- pandas / numpy
+- pandas / NumPy
 - scikit-learn
-- XGBoost
 - FastAPI
 - Streamlit
 - matplotlib / plotly
 
 ---
 
-```
-smart-demand-forecasting/
-├── app/
-├── dashboard/
-├── data/
-│   └── processed/
-│   └── raw/
-│   └── sample/
-├── models/
-├── notebooks/
-├── reports/
-│   └── figures/
-├── tests/
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
+## Future Improvements
+- Deep learning models (LSTM)
+- Hyperparameter tuning
+- Real-world datasets
+- Deployment (Docker / Cloud)
+
+
