@@ -1,5 +1,13 @@
 # Smart Demand Forecasting
 
+![version](https://img.shields.io/badge/version-v0.1.0-blue)
+![python](https://img.shields.io/badge/python-3.10+-green)
+![status](https://img.shields.io/badge/status-active-success)
+![ml](https://img.shields.io/badge/type-machine%20learning-purple)
+![framework](https://img.shields.io/badge/framework-scikit--learn-orange)
+![api](https://img.shields.io/badge/api-FastAPI-009688)
+![dashboard](https://img.shields.io/badge/dashboard-Streamlit-ff4b4b)
+
 An end-to-end machine learning system for energy load forecasting, covering data preprocessing, 
 feature engineering, model training, evaluation, API deployment, and interactive dashboard.
 
