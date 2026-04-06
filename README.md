@@ -5,6 +5,16 @@ feature engineering, model training, evaluation, API deployment, and interactive
 
 ---
 
+## Results
+
+### Prediction vs Actual
+![Prediction vs Actual](reports/figures/predictions_vs_actual.png)
+
+### Residual Distribution
+![Prediction vs Actual](reports/figures/residuals.png)
+
+---
+
 ## Feature Engineering
 
 The model uses a combination of:
