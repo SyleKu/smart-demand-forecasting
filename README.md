@@ -68,7 +68,17 @@ smart-demand-forecasting/
 ### Absolute Error Over Time
 ![Prediction vs Actual](reports/figures/absolute_error_over_time.png)
 
-## API
+## Model
+
+- Algorithm: Random Forest Regressor
+- Baseline: Lag-based prediction
+- Metrics:
+  - MAE
+  - RMSE
+  - MAPE
+
+
+## API (FastAPI)
 
 Run locally:
 
